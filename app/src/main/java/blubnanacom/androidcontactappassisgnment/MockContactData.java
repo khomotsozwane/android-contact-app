@@ -15,8 +15,6 @@ public class MockContactData {
 
     public MockContactData(Context context){
         dbOperations = new ContactDatabaseOperations(context);
-
-        dbOperations.addContactToDB(dbOperations, 1, "Simon Barr", "sbarr@internet.com", "0659166578", "red", imagePath);
     }
 
 

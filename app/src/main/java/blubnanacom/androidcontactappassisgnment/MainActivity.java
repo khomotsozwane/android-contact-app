@@ -120,10 +120,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        dbOperations.close();
+        super.onDestroy();
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
-        dbOperations.close();
-
     }
 
     @Override
