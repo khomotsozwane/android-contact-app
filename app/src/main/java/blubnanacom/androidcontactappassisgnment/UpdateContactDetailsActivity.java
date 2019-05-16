@@ -178,4 +178,9 @@ public class UpdateContactDetailsActivity extends AppCompatActivity {
         //updateContactColorSpinner.getItemAtPosition()
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(UpdateContactDetailsActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 }

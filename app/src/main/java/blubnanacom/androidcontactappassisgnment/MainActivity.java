@@ -152,7 +152,8 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_about) {
             return true;
         }else if(id == R.id.action_exit){
-            finish();
+            //finish();
+            Runtime.getRuntime().exit(0);
             return true;
         }else if(id == R.id.action_import){
             performNetworkActions();
