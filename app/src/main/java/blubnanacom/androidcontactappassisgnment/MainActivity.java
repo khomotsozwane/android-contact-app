@@ -63,20 +63,18 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        sharedPreference = getPreferences(Context.MODE_PRIVATE);
-        editor = sharedPreference.edit();
-        editor.putBoolean(SHARED_PREFERENCES, true);
-        editor.commit();
-
         contactsList = (ListView) findViewById(R.id.fullContactsListView);
 
         dbOperations = new ContactDatabaseOperations(this);
 
-        if(customCursorAdapter == null){
-            customCursorAdapter = new CustomCursorAdapter(this, loadMockData());
-        }else{
-            customCursorAdapter = new CustomCursorAdapter(this, loadRemoteData());
+        customCursorAdapter = new CustomCursorAdapter(this, loadRemoteData());
+
+        if(customCursorAdapter.getCount() == 0) {
+            //Load network data auto if empty
+            performNetworkActions();
         }
+
+        //customCursorAdapter = new CustomCursorAdapter(this, loadRemoteData());
 
         contactsList.setAdapter(customCursorAdapter);
 
