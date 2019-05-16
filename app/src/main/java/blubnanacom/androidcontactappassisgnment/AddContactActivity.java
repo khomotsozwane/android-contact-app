@@ -1,8 +1,12 @@
 package blubnanacom.androidcontactappassisgnment;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -148,10 +153,11 @@ public class AddContactActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(startImageSelectionFromGallery, "Pick an Image"), GALLERY_IMAGE);
     }
 
-    //TODO
     public void performImageCaptureActivity(){
-        Intent startImageCaptureFromCamera = new Intent(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(startImageCaptureFromCamera, CAMERA_IMAGE);
+        Intent startImageCaptureFromCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (startImageCaptureFromCamera.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(startImageCaptureFromCamera, CAMERA_IMAGE);
+        }
     }
 
     @Override
@@ -166,9 +172,22 @@ public class AddContactActivity extends AppCompatActivity {
                     int randomNumber = random.nextInt(4);
                     imagePath = String.valueOf(imageSelector[randomNumber]); //to ensure uniform profile images are associated to the contact
                     Log.d(DEBUG_TAG, imagePath);
+
+                    /*
+                     * imagePath = selectedImageUri;
+                     *
+                     * process string into drawable in CustomCursorAdapter
+                      * */
                 }
             }else if(requestCode == CAMERA_IMAGE){
-                //TODO
+                Bundle takenImageBundle = data.getExtras();
+                Bitmap imageBitmap = (Bitmap) takenImageBundle.get("data");
+
+                /*
+                * imagePath = imageBitmap.toString();
+                *
+                * */
+
             }
         }catch (Exception ex){
             Log.d(DEBUG_TAG, "An Error:" + ex.getMessage());
