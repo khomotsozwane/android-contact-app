@@ -29,7 +29,7 @@ import java.util.Random;
 public class AddContactActivity extends AppCompatActivity {
 
     public static final int GALLERY_IMAGE = -1;
-    public static final int CAMERA_IMAGE = -2;
+    public static final int CAMERA_IMAGE = 1;
     private static final String DEBUG_TAG = "AddContactActivity";
 
     EditText newContactName;
@@ -63,6 +63,8 @@ public class AddContactActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_contact);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Check if permission granted
 
         newContactName = (EditText) findViewById(R.id.nameEditText);
         newContactEmail = (EditText) findViewById(R.id.emailEditText);
@@ -100,6 +102,8 @@ public class AddContactActivity extends AppCompatActivity {
                 performImageCaptureActivity();
             }
         });
+
+        newContactImageCpatureButton.setEnabled(false);
 
         newContactImageSelectButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,12 +162,6 @@ public class AddContactActivity extends AppCompatActivity {
         if (startImageCaptureFromCamera.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(startImageCaptureFromCamera, CAMERA_IMAGE);
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(AddContactActivity.this, MainActivity.class);
-        startActivity(intent);
     }
 
     @Override

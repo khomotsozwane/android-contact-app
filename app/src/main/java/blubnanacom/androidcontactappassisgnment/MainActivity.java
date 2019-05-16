@@ -53,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String DEBUG_TAG = "MainActivty";
 
     public CustomCursorAdapter customCursorAdapter;
-    private SharedPreferences sharedPreference;
-    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        customCursorAdapter = new CustomCursorAdapter(this, mCursor);
         customCursorAdapter.notifyDataSetChanged();
     }
 
@@ -157,10 +156,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }else if(id == R.id.action_import){
             performNetworkActions();
-            boolean isImported = sharedPreference.getBoolean(SHARED_PREFERENCES, true);
-            if(isImported){
-                item.setEnabled(false);
-            }
             return true;
         }
 
@@ -182,8 +177,14 @@ public class MainActivity extends AppCompatActivity {
     public void performNetworkActions(){
         dbOperations.clearMockData(dbOperations);
         fetchContactData();
+        restartActivityForLayout();
     }
 
+    public void restartActivityForLayout(){
+        Intent startActivity = new Intent(MainActivity.this, MainActivity.class);
+        startActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(startActivity);
+    }
     public void fetchContactData(){
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 

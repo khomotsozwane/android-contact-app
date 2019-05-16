@@ -71,6 +71,9 @@ public class UpdateContactDetailsActivity extends AppCompatActivity {
         updateContactImageSelectButton = (Button) findViewById(R.id.updateImageSelectionButton);
         updateContactImageCpatureButton = (Button) findViewById(R.id.updateImageCaptureButton);
 
+        updateContactImageCpatureButton.setEnabled(false);
+        updateContactImageSelectButton.setEnabled(false);
+
         intent = getIntent();
 
         dbOperations = new ContactDatabaseOperations(this);
@@ -181,6 +184,7 @@ public class UpdateContactDetailsActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(UpdateContactDetailsActivity.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 }
