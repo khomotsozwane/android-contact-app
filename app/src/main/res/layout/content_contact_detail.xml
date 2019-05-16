@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ContactDetailActivity"
+    tools:showIn="@layout/activity_contact_detail">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="32dp"
+        android:paddingTop="@dimen/padding_top_and_bottom"
+        android:paddingBottom="@dimen/padding_top_and_bottom"
+        android:paddingRight="@dimen/padding_left_and_right"
+        android:paddingLeft="@dimen/padding_left_and_right">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:id="@+id/contactColorView"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/contactNameTextView"
+            android:layout_marginTop="10dp"
+            style="@style/Base.TextAppearance.AppCompat.Large"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/contactEmailTextView"
+            android:layout_marginLeft="5dp"
+            style="@style/Base.TextAppearance.AppCompat.Small"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/contactPhoneTextView"
+            android:layout_marginLeft="7dp"
+            style="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+        <ImageView
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:id="@+id/contactProfileImageView"/>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

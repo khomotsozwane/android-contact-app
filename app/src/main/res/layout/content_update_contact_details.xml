@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".UpdateContactDetailsActivity"
+    tools:showIn="@layout/activity_update_contact_details">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/padding_top_and_bottom"
+        android:paddingBottom="@dimen/padding_top_and_bottom"
+        android:paddingRight="@dimen/padding_left_and_right"
+        android:paddingLeft="@dimen/padding_left_and_right">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/updateNameEditText"
+        android:inputType="text"
+        style="@style/Base.TextAppearance.AppCompat.Medium"
+        android:hint="@string/add_contact_name_hint"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/updateEmailEditText"
+        android:inputType="textEmailAddress"
+        android:hint="@string/add_contact_email_hint"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/updatePhoneEditText"
+        android:inputType="phone"
+        android:hint="@string/add_contact_phone_hint"/>
+
+    <!-- Color Picker Use Spinner-->
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/updateColorSpinner"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/optional_update_text"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/updateImageSelectionButton"
+            android:text="@string/button_image_select"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/updateImageCaptureButton"
+            android:text="@string/button_image_capture"
+            android:layout_toRightOf="@+id/updateImageSelectionButton"/>
+    </RelativeLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
