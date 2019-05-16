@@ -164,7 +164,7 @@ public class AddContactActivity extends AppCompatActivity {
                     Uri selectedImageUri = data.getData();
                     Random random = new Random();
                     int randomNumber = random.nextInt(4);
-                    imagePath = String.valueOf(imageSelector[randomNumber]);
+                    imagePath = String.valueOf(imageSelector[randomNumber]); //to ensure uniform profile images are associated to the contact
                     Log.d(DEBUG_TAG, imagePath);
                 }
             }else if(requestCode == CAMERA_IMAGE){

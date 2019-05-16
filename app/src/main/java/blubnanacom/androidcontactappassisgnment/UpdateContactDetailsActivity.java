@@ -102,6 +102,8 @@ public class UpdateContactDetailsActivity extends AppCompatActivity {
 
         loadContactDetailsDataFromCursor(intentExtra);
 
+        updateContactColorSpinner.setSelection(getColorFromIndex(colorSelection, color));
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,7 +140,20 @@ public class UpdateContactDetailsActivity extends AppCompatActivity {
     private void getSpinnerColorSelected(String color){
         colorSelected =  color;
     }
-    
+
+    private int getColorFromIndex(String[] colors, String inputColor){
+        colors = colorSelection;
+        int result = 0;
+        for(int i = 0; i < colors.length; i++){
+            if(colors[i] == inputColor){
+                result = i;
+            }
+        }
+
+        Log.d(DEBUG_TAG, "Index: " + result);
+        return result;
+    }
+
     public void loadContactDetailsDataFromCursor(int id){
         mCursor = dbOperations.getContactById(dbOperations,id);
         try{

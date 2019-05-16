@@ -70,7 +70,7 @@ public class ContactDatabaseOperations extends SQLiteOpenHelper {
         return add;
     }
 
-    // TODO update to remove item from DB
+
     public long removeContactFromDB(ContactDatabaseOperations dbOperations, int id){
         SQLiteDatabase db = dbOperations.getWritableDatabase();
         String SQL_QUERY =  TableData.TableInfo._ID  + "=" + "?";
@@ -82,7 +82,7 @@ public class ContactDatabaseOperations extends SQLiteOpenHelper {
         return delete;
     }
 
-    //TODO
+
     public long updateContactById(ContactDatabaseOperations dbOperations, int id, String name, String email,
                             String phone, String color, String image){
         SQLiteDatabase db = dbOperations.getWritableDatabase();
@@ -106,9 +106,7 @@ public class ContactDatabaseOperations extends SQLiteOpenHelper {
         String DELETE_SQL_QUERY = "DELETE FROM " + TableData.TableInfo.TABLE_NAME;
         db.rawQuery(DELETE_SQL_QUERY,null);
     }
-    /*
-    *   TODO Import Contact Data From Network (Volley)
-    * */
+
     public void importNetworkData(ContactDatabaseOperations dbOperations, int id, String name, String email,
                             String phone, String color, String image){
         SQLiteDatabase db = dbOperations.getWritableDatabase();
